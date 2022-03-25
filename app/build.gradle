@@ -60,7 +60,37 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$dHilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$dHilt_version"
 
+    //Room dep
+    def room_version = "2.4.2"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    testImplementation "androidx.room:room-testing:$room_version"
 
+    //lifecycle dep
+    def lifecycle_version = "2.5.0-alpha05"
+    def arch_version = "2.1.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+    testImplementation "androidx.arch.core:core-testing:$arch_version"
+
+    //shimmer recyclerview
+    implementation "com.facebook.shimmer:shimmer:0.5.0"
+    implementation "com.todkars:shimmer-recyclerview:0.4.1"
+
+    //datastore dep
+    implementation "androidx.datastore:datastore:1.0.0"
+
+    //Gson dep
+    implementation 'com.google.code.gson:gson:2.9.0'
+
+    //Jsoup dep
+    implementation 'org.jsoup:jsoup:1.14.3'
+
+    //retrofit dep
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation "com.squareup.retrofit2:converter-gson"
 
 
 
