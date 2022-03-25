@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="light_green_700">#5efc82</color>
     <color name="medium_green_700">#00c853</color>
     <color name="dark_green_700">#009624</color>
@@ -11,9 +12,4 @@
     <color name="light_dark">#1B1C1E</color>
     <color name="light_grey">#e0e0e0</color>
     <color name="dark_grey">#1b1b1b</color>
-
-
-
-
-
 </resources>

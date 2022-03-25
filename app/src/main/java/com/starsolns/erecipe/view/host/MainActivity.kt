@@ -7,6 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.starsolns.erecipe.R
 import com.starsolns.erecipe.databinding.ActivityMainBinding
 
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
             setOf(R.id.recipesFragment, R.id.favouritesFragment, R.id.jokeFragment)
         )
 
+        binding.bottomNav.setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
     }
