@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ERecipe">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.host.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
