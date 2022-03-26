@@ -19,6 +19,7 @@ class RecipesFragment : Fragment() {
     ): View? {
        _binding = FragmentRecipesBinding.inflate(layoutInflater, container, false)
 
+        binding.recipesRv.showShimmer()
 
         return binding.root
     }
