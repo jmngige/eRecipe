@@ -43,7 +43,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    tools:srcCompat="@{recipe.image}" />
 
                 <TextView
                     android:id="@+id/recipe_name_txt"
@@ -55,7 +55,7 @@
                     android:ellipsize="end"
                     android:fontFamily="@font/acme"
                     android:maxLines="2"
-                    android:text="Lorem ipsum dolor sit amet, consectetur"
+                    android:text="@{recipe.title}"
                     android:textColor="@color/light_dark"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -71,7 +71,7 @@
                     android:layout_marginEnd="12dp"
                     android:ellipsize="end"
                     android:maxLines="3"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
+                    android:text="@{recipe.summary}"
                     android:textColor="@color/dark_grey"
                     android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -82,7 +82,7 @@
                     android:id="@+id/likes_count_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="100"
+                    android:text="@{}"
                     app:layout_constraintStart_toStartOf="@+id/recipe_description_txt"
                     app:layout_constraintTop_toBottomOf="@+id/likes_imageView" />
 

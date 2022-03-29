@@ -3,6 +3,7 @@ package com.starsolns.erecipe.view.adadpter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.starsolns.erecipe.databinding.RecipeItemLayoutBinding
 import com.starsolns.erecipe.model.Recipe
@@ -35,8 +36,10 @@ class RecipesAdapter(private val context: Context): RecyclerView.Adapter<Recipes
     }
 
     fun setData(newData: Recipe){
+        val recipeDiffUtil = RecipeDiffUtil(recipeList, newData.results)
+        val diffUtilResult = DiffUtil.calculateDiff(recipeDiffUtil)
         recipeList = newData.results
-        notifyDataSetChanged()
+        diffUtilResult.dispatchUpdatesTo(this)
     }
 
 }
