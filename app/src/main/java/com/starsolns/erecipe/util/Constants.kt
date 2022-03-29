@@ -17,6 +17,11 @@ class Constants {
         const val QUERY_FILL_INGREDIENTS = "true"
         const val QUERY_ADD_RECIPE_INFO = "true"
 
+
+        /** Room variables */
+        const val DATABASE_NAME = "recipes_database"
+        const val TABLE_NAME = "recipes_table"
+
     }
 
 }
