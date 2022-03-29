@@ -20,7 +20,7 @@ class MainViewModel @Inject constructor(
     private val repository: Repository,
     application: Application) : AndroidViewModel(application) {
 
-    private val recipesResponse: MutableLiveData<NetworkResult<Recipe>> = MutableLiveData()
+    val recipesResponse: MutableLiveData<NetworkResult<Recipe>> = MutableLiveData()
 
 
     fun getRecipes(queries: Map<String, String>){
