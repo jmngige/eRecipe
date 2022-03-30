@@ -15,7 +15,7 @@ class SharedViewModel(application: Application): AndroidViewModel(application) {
     fun recipeQueries(): HashMap<String, String>{
         val queries: HashMap<String, String> = HashMap()
 
-        queries[QUERY_NUMBER] = "30"
+        queries[QUERY_NUMBER] = "50"
         queries[QUERY_API_KEY] = Constants.API_KEY
         queries[QUERY_TYPE] = "snack"
         queries[QUERY_DIET] = "vegan"
