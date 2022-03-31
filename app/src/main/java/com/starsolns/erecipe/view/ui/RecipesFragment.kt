@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.starsolns.erecipe.R
 import com.starsolns.erecipe.databinding.FragmentRecipesBinding
@@ -18,6 +19,7 @@ import com.starsolns.erecipe.view.adadpter.RecipesAdapter
 import com.starsolns.erecipe.viewmodel.MainViewModel
 import com.starsolns.erecipe.viewmodel.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class RecipesFragment : Fragment() {
@@ -46,13 +48,28 @@ class RecipesFragment : Fragment() {
        _binding = FragmentRecipesBinding.inflate(layoutInflater, container, false)
 
         setUpRecyclerView()
-        getRecipesData()
+        retrieveRecipesFromDatabase()
 
 
         return binding.root
     }
 
-    private fun getRecipesData(){
+    /** retrieve recipes data from database first otherwise if empty retrieve from api */
+    private fun retrieveRecipesFromDatabase() {
+        lifecycleScope.launch {
+            mainViewModel.localRecipes.observe(viewLifecycleOwner){database->
+                if(database.isNotEmpty()){
+                    recipesAdapter.setData(database[0].recipe)
+                    hideShimmerEffect()
+                }else {
+                    getRemoteRecipesData()
+                }
+            }
+        }
+    }
+
+    /** retrieve data from the remote api */
+    private fun getRemoteRecipesData(){
         mainViewModel.getRecipes(sharedViewModel.recipeQueries())
         mainViewModel.recipesResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
@@ -70,12 +87,24 @@ class RecipesFragment : Fragment() {
                 }
                 is NetworkResult.Error -> {
                     Log.i("RecipeFragment", "Network Error")
+                    cachedRecipes()
                     hideShimmerEffect()
                     Toast.makeText(requireContext(), response.message.toString(), Toast.LENGTH_LONG)
                         .show()
                 }
             }
 
+        }
+    }
+
+    /** retrieve cached data in the database */
+    private fun cachedRecipes(){
+        lifecycleScope.launch {
+            mainViewModel.localRecipes.observe(viewLifecycleOwner){database->
+                if(database.isNotEmpty()){
+                    recipesAdapter.setData(database[0].recipe)
+                }
+            }
         }
     }
 
