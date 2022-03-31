@@ -1,4 +1,32 @@
 package com.starsolns.erecipe.di
 
+import android.content.Context
+import androidx.room.Room
+import com.starsolns.erecipe.data.room.RecipeDatabase
+import com.starsolns.erecipe.util.Constants.Companion.DATABASE_NAME
+import dagger.Provides
+import dagger.hilt.android.HiltAndroidApp
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Singleton
+
+@HiltAndroidApp
 class DatabaseModule {
+
+    @Singleton
+    @Provides
+    fun provideDbInstance(
+        @ApplicationContext context: Context
+    ) =
+        Room.databaseBuilder(
+            context,
+            RecipeDatabase::class.java,
+            DATABASE_NAME
+        ).build()
+
+
+    @Singleton
+    @Provides
+    fun provideRecipeDao(recipeDatabase: RecipeDatabase) = recipeDatabase.recipeDao()
+
+
 }
