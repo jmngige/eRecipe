@@ -16,7 +16,7 @@ class RecipeBindingAdapter {
         @JvmStatic
         fun showErrorImageView(
             imageView: ImageView,
-            apiResponse: NetworkResult<Recipe>,
+            apiResponse: NetworkResult<Recipe?>,
             cacheRecipes: List<RecipeEntity>
         ){
             if(apiResponse is NetworkResult.Error && cacheRecipes.isNullOrEmpty()){
@@ -30,9 +30,9 @@ class RecipeBindingAdapter {
 
         @BindingAdapter("android:readApiResponse2", "android:readCacheResponse2", requireAll = true)
         @JvmStatic
-        fun showErrorImageView(
+        fun showErrorTextView(
             textView: TextView,
-            apiResponse: NetworkResult<Recipe>,
+            apiResponse: NetworkResult<Recipe?>,
             cacheRecipes: List<RecipeEntity>
         ){
             if(apiResponse is NetworkResult.Error && cacheRecipes.isNullOrEmpty()){
