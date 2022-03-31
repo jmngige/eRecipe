@@ -15,6 +15,7 @@ import com.starsolns.erecipe.databinding.FragmentRecipesBinding
 import com.starsolns.erecipe.util.Constants
 import com.starsolns.erecipe.util.Constants.Companion.API_KEY
 import com.starsolns.erecipe.util.NetworkResult
+import com.starsolns.erecipe.util.observeOnce
 import com.starsolns.erecipe.view.adadpter.RecipesAdapter
 import com.starsolns.erecipe.viewmodel.MainViewModel
 import com.starsolns.erecipe.viewmodel.SharedViewModel
@@ -57,7 +58,7 @@ class RecipesFragment : Fragment() {
     /** retrieve recipes data from database first otherwise if empty retrieve from api */
     private fun retrieveRecipesFromDatabase() {
         lifecycleScope.launch {
-            mainViewModel.localRecipes.observe(viewLifecycleOwner){database->
+            mainViewModel.localRecipes.observeOnce(viewLifecycleOwner){database->
                 if(database.isNotEmpty()){
                     recipesAdapter.setData(database[0].recipe)
                     hideShimmerEffect()
