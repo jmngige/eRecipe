@@ -46,7 +46,8 @@ class RecipesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       _binding = FragmentRecipesBinding.inflate(layoutInflater, container, false)
+       _binding = FragmentRecipesBinding.inflate(inflater, container, false)
+
 
         setUpRecyclerView()
         retrieveRecipesFromDatabase()
