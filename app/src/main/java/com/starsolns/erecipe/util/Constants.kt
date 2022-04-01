@@ -12,8 +12,8 @@ class Constants {
         /** API Queries filters */
         const val QUERY_NUMBER = "number"
         const val QUERY_API_KEY = "apiKey"
-        const val QUERY_TYPE = "snack"
-        const val QUERY_DIET = "vegan"
+        const val QUERY_TYPE = "main course"
+        const val QUERY_DIET = "gluten free"
         const val QUERY_FILL_INGREDIENTS = "true"
         const val QUERY_ADD_RECIPE_INFO = "true"
 
