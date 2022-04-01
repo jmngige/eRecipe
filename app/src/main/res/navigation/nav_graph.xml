@@ -9,7 +9,11 @@
         android:id="@+id/recipesFragment"
         android:name="com.starsolns.erecipe.view.ui.RecipesFragment"
         android:label="Recipes"
-        tools:layout="@layout/fragment_recipes" />
+        tools:layout="@layout/fragment_recipes" >
+        <action
+            android:id="@+id/action_recipesFragment_to_bottomSheetFragment"
+            app:destination="@id/bottomSheetFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favouritesFragment"
         android:name="com.starsolns.erecipe.view.ui.FavouritesFragment"
@@ -20,4 +24,13 @@
         android:name="com.starsolns.erecipe.view.ui.JokeFragment"
         android:label="Joke"
         tools:layout="@layout/fragment_joke" />
+    <dialog
+        android:id="@+id/bottomSheetFragment"
+        android:name="com.starsolns.erecipe.view.ui.BottomSheetFragment"
+        android:label="Filters"
+        tools:layout="@layout/fragment_bottom_sheet">
+        <action
+            android:id="@+id/action_bottomSheetFragment_to_recipesFragment"
+            app:destination="@id/recipesFragment" />
+    </dialog>
 </navigation>
