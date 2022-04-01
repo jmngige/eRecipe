@@ -17,4 +17,6 @@
     <color name="light_grey">#e0e0e0</color>
     <color name="medium_grey">#BCB9B9</color>
     <color name="dark_grey">#1b1b1b</color>
+
+    <color name="light_green_color">#505efc82</color>
 </resources>
