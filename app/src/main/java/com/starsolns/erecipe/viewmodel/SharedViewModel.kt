@@ -17,7 +17,7 @@ class SharedViewModel(application: Application): AndroidViewModel(application) {
 
         queries[QUERY_NUMBER] = "50"
         queries[QUERY_API_KEY] = Constants.API_KEY
-        queries[QUERY_TYPE] = "snack"
+        queries[QUERY_TYPE] = "main course"
         queries[QUERY_DIET] = "vegan"
         queries[QUERY_ADD_RECIPE_INFO] = "true"
         queries[QUERY_FILL_INGREDIENTS] = "true"
