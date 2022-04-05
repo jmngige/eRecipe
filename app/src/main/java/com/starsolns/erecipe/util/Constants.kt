@@ -1,6 +1,6 @@
 package com.starsolns.erecipe.util
 
-import retrofit2.http.QueryMap
+
 
 class Constants {
 
@@ -21,6 +21,16 @@ class Constants {
         /** Room variables */
         const val DATABASE_NAME = "recipes_database"
         const val TABLE_NAME = "recipes_table"
+
+        /** Bottom Sheet Datastore variables */
+        const val ERECIPE_DATASTORE_NAME = "eRecipe"
+        const val DEFAULT_MEAL_TYPE = "main course"
+        const val DEFAULT_DIET_TYPE = "ketogenic"
+        const val PREFERENCE_MEAL_TYPE = "mealType"
+        const val PREFERENCE_MEAL_TYPE_ID = "mealTypeId"
+        const val PREFERENCE_DIET_TYPE = "dietType"
+        const val PREFERENCE_DIET_TYPE_ID = "dietTypeId"
+
 
     }
 
