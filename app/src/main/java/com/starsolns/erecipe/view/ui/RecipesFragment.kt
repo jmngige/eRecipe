@@ -1,5 +1,6 @@
 package com.starsolns.erecipe.view.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -14,8 +15,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.starsolns.erecipe.R
 import com.starsolns.erecipe.databinding.FragmentRecipesBinding
-import com.starsolns.erecipe.util.Constants
-import com.starsolns.erecipe.util.Constants.Companion.API_KEY
+import com.starsolns.erecipe.util.NetworkListener
 import com.starsolns.erecipe.util.NetworkResult
 import com.starsolns.erecipe.util.observeOnce
 import com.starsolns.erecipe.view.adadpter.RecipesAdapter
@@ -34,6 +34,8 @@ class RecipesFragment : Fragment() {
     private lateinit var sharedViewModel: SharedViewModel
     private lateinit var recipesAdapter: RecipesAdapter
 
+    private lateinit var networkListener: NetworkListener
+
     private val args : RecipesFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +46,7 @@ class RecipesFragment : Fragment() {
         recipesAdapter = RecipesAdapter(requireContext())
 
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,6 +59,16 @@ class RecipesFragment : Fragment() {
 
         binding.floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_recipesFragment_to_bottomSheetFragment)
+        }
+
+        //initialize network listener
+        lifecycleScope.launch {
+            networkListener = NetworkListener()
+            networkListener.checkNetworkConnectivityStatus(requireContext())
+                .collect{status->
+                    sharedViewModel.networkStatus = status
+                    sharedViewModel.checkNetworkStatus()
+                }
         }
 
         return binding.root

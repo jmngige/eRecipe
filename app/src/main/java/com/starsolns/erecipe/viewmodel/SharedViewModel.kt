@@ -1,6 +1,7 @@
 package com.starsolns.erecipe.viewmodel
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.starsolns.erecipe.data.datastore.DataStoreRepository
@@ -25,6 +26,7 @@ class SharedViewModel @Inject constructor(
     private var mealType = DEFAULT_MEAL_TYPE
     private var dietType = DEFAULT_DIET_TYPE
 
+    var networkStatus = false
 
     val readMealDietType = dataStoreRepository.readDatastore
 
@@ -52,6 +54,15 @@ class SharedViewModel @Inject constructor(
         queries[QUERY_FILL_INGREDIENTS] = "true"
 
         return queries
+    }
+
+    fun checkNetworkStatus(){
+        if (!networkStatus){
+            Toast.makeText(getApplication(), "Internet connection lost", Toast.LENGTH_LONG).show()
+        }
+        else if(networkStatus) {
+            Toast.makeText(getApplication(), "Internet connection found", Toast.LENGTH_LONG).show()
+        }
     }
 
 }
