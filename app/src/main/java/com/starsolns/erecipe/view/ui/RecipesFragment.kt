@@ -3,10 +3,8 @@ package com.starsolns.erecipe.view.ui
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -126,6 +124,11 @@ class RecipesFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.home_bar_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     private fun setUpRecyclerView(){
