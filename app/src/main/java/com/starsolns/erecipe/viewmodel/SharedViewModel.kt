@@ -14,6 +14,7 @@ import com.starsolns.erecipe.util.Constants.Companion.QUERY_API_KEY
 import com.starsolns.erecipe.util.Constants.Companion.QUERY_DIET
 import com.starsolns.erecipe.util.Constants.Companion.QUERY_FILL_INGREDIENTS
 import com.starsolns.erecipe.util.Constants.Companion.QUERY_NUMBER
+import com.starsolns.erecipe.util.Constants.Companion.QUERY_QUERY
 import com.starsolns.erecipe.util.Constants.Companion.QUERY_TYPE
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -46,6 +47,7 @@ class SharedViewModel @Inject constructor(
         }
     }
 
+    /** Query recipes from api using filters */
     fun recipeQueries(): HashMap<String, String>{
         val queries: HashMap<String, String> = HashMap()
 
@@ -66,6 +68,27 @@ class SharedViewModel @Inject constructor(
         return queries
     }
 
+    /** Query recipes from api using a search query */
+    fun searchRecipesQuery(searchQuery: String): Map<String, String>{
+
+        val queries: HashMap<String, String> = HashMap()
+
+        viewModelScope.launch {
+            readMealDietType.collect{ value->
+                mealType = value.selectedMealType
+                dietType = value.selectedDietType
+            }
+        }
+
+        queries[QUERY_QUERY] = searchQuery
+        queries[QUERY_NUMBER] = "50"
+        queries[QUERY_API_KEY] = Constants.API_KEY
+        queries[QUERY_ADD_RECIPE_INFO] = "true"
+        queries[QUERY_FILL_INGREDIENTS] = "true"
+
+        return queries
+
+    }
 
     /** display toast message on network status  */
     fun checkNetworkStatus() {

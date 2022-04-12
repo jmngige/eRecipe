@@ -10,6 +10,7 @@ class Constants {
 
 
         /** API Queries filters */
+        const val QUERY_QUERY = "query"
         const val QUERY_NUMBER = "number"
         const val QUERY_API_KEY = "apiKey"
         const val QUERY_TYPE = "type"
