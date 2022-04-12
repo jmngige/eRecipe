@@ -3,6 +3,7 @@ package com.starsolns.erecipe.viewmodel
 import android.app.Application
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.starsolns.erecipe.data.datastore.DataStoreRepository
 import com.starsolns.erecipe.util.Constants
@@ -27,12 +28,21 @@ class SharedViewModel @Inject constructor(
     private var dietType = DEFAULT_DIET_TYPE
 
     var networkStatus = false
+    var onlineStatus = false
 
     val readMealDietType = dataStoreRepository.readDatastore
+    val readOnlineStatus = dataStoreRepository.readOnlineStatus.asLiveData()
 
     fun saveMealDietSelection(mealType: String, mealTypeId: Int, dietType: String, dietTypeId: Int){
         viewModelScope.launch {
         dataStoreRepository.saveMealandDietType(mealType, mealTypeId, dietType, dietTypeId)
+        }
+    }
+
+
+    fun saveOnlineStatus(onlineStatus: Boolean){
+        viewModelScope.launch {
+            dataStoreRepository.saveOnlineStatus(onlineStatus)
         }
     }
 
@@ -56,13 +66,17 @@ class SharedViewModel @Inject constructor(
         return queries
     }
 
-    fun checkNetworkStatus(){
-        if (!networkStatus){
+
+    /** display toast message on network status  */
+    fun checkNetworkStatus() {
+        if (!networkStatus) {
             Toast.makeText(getApplication(), "Internet connection lost", Toast.LENGTH_LONG).show()
-        }
-        else if(networkStatus) {
-            Toast.makeText(getApplication(), "Internet connection found", Toast.LENGTH_LONG).show()
+            saveOnlineStatus(true)
+        }else if(networkStatus){
+            if (onlineStatus){
+                Toast.makeText(getApplication(), "Internet connection available", Toast.LENGTH_LONG).show()
+                saveOnlineStatus(false)
+            }
         }
     }
-
 }

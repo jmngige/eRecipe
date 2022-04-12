@@ -2,6 +2,7 @@ package com.starsolns.erecipe.data.datastore
 
 import android.content.Context
 import androidx.datastore.core.DataStore
+import androidx.datastore.dataStore
 import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
 import com.starsolns.erecipe.util.Constants.Companion.DEFAULT_DIET_TYPE
@@ -11,6 +12,7 @@ import com.starsolns.erecipe.util.Constants.Companion.PREFERENCE_DIET_TYPE
 import com.starsolns.erecipe.util.Constants.Companion.PREFERENCE_DIET_TYPE_ID
 import com.starsolns.erecipe.util.Constants.Companion.PREFERENCE_MEAL_TYPE
 import com.starsolns.erecipe.util.Constants.Companion.PREFERENCE_MEAL_TYPE_ID
+import com.starsolns.erecipe.util.Constants.Companion.PREFERENCE_ONLINE_STATUS
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import kotlinx.coroutines.flow.Flow
@@ -69,6 +71,24 @@ class DataStoreRepository @Inject constructor(
         var selectedDietTypeId: Int
     )
 
+    val readOnlineStatus: Flow<Boolean> = context.datastore.data
+        .catch { exception->
+            if(exception is IOException){
+                emit(emptyPreferences())
+            }else {
+                throw exception
+            }
+        }
+        .map { Pref->
+            Pref[ONLINE_STATUS] ?: false
+        }
+
+    suspend fun saveOnlineStatus(onlineStatus: Boolean){
+        context.datastore.edit { Pref->
+            Pref[ONLINE_STATUS] = onlineStatus
+        }
+    }
+
 
     /** variables to store in the datastore*/
     companion object {
@@ -76,6 +96,7 @@ class DataStoreRepository @Inject constructor(
          val SELECTED_MEAL_TYPE_ID = intPreferencesKey(PREFERENCE_MEAL_TYPE_ID)
         val SELECTED_DIET_TYPE = stringPreferencesKey(PREFERENCE_DIET_TYPE)
         val SELECTED_DIET_TYPE_ID = intPreferencesKey(PREFERENCE_DIET_TYPE_ID)
+        val ONLINE_STATUS = booleanPreferencesKey(PREFERENCE_ONLINE_STATUS)
     }
 
 }

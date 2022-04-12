@@ -56,7 +56,15 @@ class RecipesFragment : Fragment() {
         retrieveRecipesFromDatabase()
 
         binding.floatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_recipesFragment_to_bottomSheetFragment)
+           if(sharedViewModel.networkStatus){
+               findNavController().navigate(R.id.action_recipesFragment_to_bottomSheetFragment)
+           }else{
+               sharedViewModel.checkNetworkStatus()
+           }
+        }
+
+        sharedViewModel.readOnlineStatus.observe(viewLifecycleOwner){status->
+            sharedViewModel.onlineStatus = status
         }
 
         //initialize network listener
@@ -66,6 +74,7 @@ class RecipesFragment : Fragment() {
                 .collect{status->
                     sharedViewModel.networkStatus = status
                     sharedViewModel.checkNetworkStatus()
+                    retrieveRecipesFromDatabase()
                 }
         }
 
