@@ -64,9 +64,9 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
            }
         }
 
-        sharedViewModel.readOnlineStatus.observe(viewLifecycleOwner){status->
-            sharedViewModel.onlineStatus = status
-        }
+//        sharedViewModel.readOnlineStatus.observe(viewLifecycleOwner){status->
+//            sharedViewModel.onlineStatus = status
+//        }
 
         /** initialize network listener */
         lifecycleScope.launch {
