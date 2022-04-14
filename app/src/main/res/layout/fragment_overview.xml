@@ -10,11 +10,12 @@
     <ImageView
         android:id="@+id/detail_imageView"
         android:layout_width="0dp"
-        android:layout_height="230dp"
+        android:layout_height="0dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/details_first_horizontal_guidline"
         tools:src="@tools:sample/avatars" />
 
     <View
@@ -70,6 +71,13 @@
         app:layout_constraintEnd_toEndOf="@id/details_likes_text"
         app:layout_constraintStart_toStartOf="@id/details_likes_text"
         app:tint="@color/white" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/details_first_horizontal_guidline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".33" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/details_first_vertical_guidLine"
@@ -139,9 +147,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_check"
-        app:layout_constraintTop_toTopOf="@id/vegeterian_check_iv"
-        app:layout_constraintStart_toStartOf="@id/details_second_vertical_guidLine"
         app:layout_constraintBottom_toBottomOf="@id/vegeterian_check_iv"
+        app:layout_constraintStart_toStartOf="@id/details_second_vertical_guidLine"
+        app:layout_constraintTop_toTopOf="@id/vegeterian_check_iv"
         app:tint="@color/bg_grey" />
 
     <TextView
@@ -182,8 +190,8 @@
         android:id="@+id/vegan_check_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_check"
         android:layout_marginTop="16dp"
+        android:src="@drawable/ic_check"
         app:layout_constraintStart_toStartOf="@id/details_first_vertical_guidLine"
         app:layout_constraintTop_toBottomOf="@+id/vegeterian_check_iv"
         app:tint="@color/bg_grey" />
@@ -205,9 +213,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_check"
-        app:layout_constraintTop_toTopOf="@id/vegan_check_iv"
-        app:layout_constraintStart_toStartOf="@id/details_second_vertical_guidLine"
         app:layout_constraintBottom_toBottomOf="@+id/vegan_check_iv"
+        app:layout_constraintStart_toStartOf="@id/details_second_vertical_guidLine"
+        app:layout_constraintTop_toTopOf="@id/vegan_check_iv"
         app:tint="@color/bg_grey" />
 
     <TextView
@@ -218,19 +226,18 @@
         android:maxLines="1"
         android:text="Dairy Free"
         android:textColor="@color/bg_grey"
-        app:layout_constraintTop_toTopOf="@+id/dairyFree_check_iv"
         app:layout_constraintBottom_toBottomOf="@id/dairyFree_check_iv"
         app:layout_constraintStart_toEndOf="@id/dairyFree_check_iv"
-        />
+        app:layout_constraintTop_toTopOf="@+id/dairyFree_check_iv" />
 
     <ImageView
         android:id="@+id/cheap_check_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_check"
-        app:layout_constraintTop_toTopOf="@id/vegan_check_iv"
-        app:layout_constraintStart_toStartOf="@id/details_third_vertical_guidLine"
         app:layout_constraintBottom_toBottomOf="@+id/vegan_check_iv"
+        app:layout_constraintStart_toStartOf="@id/details_third_vertical_guidLine"
+        app:layout_constraintTop_toTopOf="@id/vegan_check_iv"
         app:tint="@color/bg_grey" />
 
     <TextView
@@ -241,17 +248,16 @@
         android:maxLines="1"
         android:text="Cheap"
         android:textColor="@color/bg_grey"
-        app:layout_constraintTop_toTopOf="@+id/cheap_check_iv"
         app:layout_constraintBottom_toBottomOf="@id/cheap_check_iv"
         app:layout_constraintStart_toEndOf="@id/cheap_check_iv"
-        />
+        app:layout_constraintTop_toTopOf="@+id/cheap_check_iv" />
 
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:layout_marginTop="14dp"
-        app:layout_constraintStart_toStartOf="@id/details_first_vertical_guidLine"
         app:layout_constraintEnd_toEndOf="@id/details_fourth_vertical_guidLine"
+        app:layout_constraintStart_toStartOf="@id/details_first_vertical_guidLine"
         app:layout_constraintTop_toBottomOf="@id/vegan_check_iv">
 
         <LinearLayout
@@ -260,16 +266,18 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/detail_recipe_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Recipe Description"
-                android:id="@+id/detail_recipe_description"
-                android:textSize="16sp"
-                android:textColor="@color/bg_grey"/>
+                android:textColor="@color/bg_grey"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
     </ScrollView>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
