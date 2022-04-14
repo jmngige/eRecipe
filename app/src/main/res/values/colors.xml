@@ -19,4 +19,6 @@
     <color name="dark_grey">#1b1b1b</color>
 
     <color name="light_green_color">#505efc82</color>
+
+    <color name="tabLayoutBackground">#009624</color>
 </resources>

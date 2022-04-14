@@ -17,6 +17,7 @@ class RecipeItemBindingAdapter {
     companion object {
 
         @BindingAdapter("android:setRecipeItemOnClick")
+        @JvmStatic
         fun setRecipeItemOnClick(recipeItemsLayout: ConstraintLayout, result: Result){
             recipeItemsLayout.setOnClickListener {
                val action = RecipesFragmentDirections.actionRecipesFragmentToDetailsActivity(result)
