@@ -3,14 +3,26 @@ package com.starsolns.erecipe.view.adadpter
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import androidx.navigation.findNavController
 import coil.load
 import com.starsolns.erecipe.R
+import com.starsolns.erecipe.model.Result
+import com.starsolns.erecipe.view.ui.RecipesFragmentDirections
 
 class RecipeItemBindingAdapter {
 
     companion object {
+
+        @BindingAdapter("android:setRecipeItemOnClick")
+        fun setRecipeItemOnClick(recipeItemsLayout: ConstraintLayout, result: Result){
+            recipeItemsLayout.setOnClickListener {
+               val action = RecipesFragmentDirections.actionRecipesFragmentToDetailsActivity(result)
+                recipeItemsLayout.findNavController().navigate(action)
+            }
+        }
 
         @BindingAdapter("android:loadImage")
         @JvmStatic

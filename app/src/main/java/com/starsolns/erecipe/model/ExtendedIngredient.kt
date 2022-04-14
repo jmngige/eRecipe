@@ -2,6 +2,7 @@ package com.starsolns.erecipe.model
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class ExtendedIngredient(
     @SerializedName("amount")
@@ -16,4 +17,4 @@ data class ExtendedIngredient(
     val original: String,
     @SerializedName("unit")
     val unit: String
-)
+): Serializable

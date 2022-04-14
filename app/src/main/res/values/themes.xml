@@ -14,10 +14,26 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <!-- Filter chips design style -->
     <style name="customChipStyle" parent="Widget.MaterialComponents.Chip.Filter">
         <item name="chipBackgroundColor">@color/chip_background</item>
         <item name="android:textColor">@color/chip_views_background</item>
         <item name="chipIconTint">@color/chip_views_background</item>
+    </style>
+
+    <!-- Tab layout design style -->
+    <style name="DetailsCustomStyle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/medium_green_700</item>
+        <item name="colorPrimaryVariant">@color/dark_green_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/medium_green_800</item>
+        <item name="colorSecondaryVariant">@color/dark_green_800</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- toolbar color. -->
+        <item name="colorControlNormal">@color/white</item>
     </style>
 
 </resources>
