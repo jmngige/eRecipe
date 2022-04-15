@@ -4,9 +4,12 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.starsolns.erecipe.R
 import com.starsolns.erecipe.databinding.IngredientsItemLayoutBinding
 import com.starsolns.erecipe.model.ExtendedIngredient
 import com.starsolns.erecipe.util.Constants.Companion.BASE_IMAGE_URL
@@ -21,14 +24,19 @@ class IngredientsAdapter(
         parent: ViewGroup,
         viewType: Int
     ): IngredientsAdapter.ViewHolder {
-        val ingredientLayoutBinding = IngredientsItemLayoutBinding.inflate(LayoutInflater.from(context), parent, false)
-        return ViewHolder(ingredientLayoutBinding)
+       val view = LayoutInflater.from(context).inflate(R.layout.ingredients_item_layout, parent, false)
+        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: IngredientsAdapter.ViewHolder, position: Int) {
         val currentIngredient = ingredientsList[position]
-        holder.bind(currentIngredient)
 
+        holder.title.text = currentIngredient.name
+        holder.amount.text = currentIngredient.amount.toString()
+        holder.unit.text = currentIngredient.unit
+        holder.consistency.text = currentIngredient.consistency
+        holder.original.text = currentIngredient.original
+        holder.imageView.load(BASE_IMAGE_URL + currentIngredient.image)
 
     }
 
@@ -36,23 +44,14 @@ class IngredientsAdapter(
        return ingredientsList.size
     }
 
-     inner class ViewHolder(private val binding: IngredientsItemLayoutBinding): RecyclerView.ViewHolder(binding.root){
-        private val imageView = binding.ingredientImageView
-        private val title = binding.ingredientName
-        private val amount = binding.ingredientAmount
-        private val unit = binding.ingredientUnit
-        private val consistency = binding.ingredientConsistency
-        private val original = binding.ingredientOriginal
+      class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+        val imageView: ImageView = itemView.findViewById(R.id.ingredient_imageView)
+        val title: TextView = itemView.findViewById(R.id.ingredient_name)
+        val amount: TextView = itemView.findViewById(R.id.ingredient_amount)
+        val unit: TextView = itemView.findViewById(R.id.ingredient_unit)
+        val consistency: TextView = itemView.findViewById(R.id.ingredient_consistency)
+        val original: TextView = itemView.findViewById(R.id.ingredient_original)
 
-         fun bind(ingredient: ExtendedIngredient){
-             title.text = ingredient.name.capitalize()
-             amount.text = ingredient.amount.toString()
-             unit.text = ingredient.unit
-             consistency.text = ingredient.consistency
-             original.text = ingredient.original
-             imageView.load(BASE_IMAGE_URL + ingredient.image)
-
-         }
     }
 
     fun setData(ingredients: List<ExtendedIngredient>){
