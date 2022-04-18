@@ -35,7 +35,7 @@ class IngredientsFragment : Fragment() {
 
         }
 
-        Log.i("TAG", "onCreateView: No data Here Too")
+        Log.i("TAG", "onCreateView: No data Here Too but we have  ${recipe.title}")
 
 
         binding.ingredientsRv.layoutManager = LinearLayoutManager(requireActivity())
@@ -45,10 +45,6 @@ class IngredientsFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        Log.i("TAG", "onCreateView: No data Here Too ooo")
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()
