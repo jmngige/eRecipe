@@ -2,16 +2,13 @@ package com.starsolns.erecipe.view.ui.details
 
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import coil.load
 import com.starsolns.erecipe.R
 import com.starsolns.erecipe.databinding.FragmentOverviewBinding
 import com.starsolns.erecipe.model.Result
-import org.jsoup.Jsoup
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class OverviewFragment : Fragment() {
@@ -96,4 +93,5 @@ class OverviewFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

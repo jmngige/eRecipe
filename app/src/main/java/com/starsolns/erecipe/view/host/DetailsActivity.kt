@@ -2,6 +2,8 @@ package com.starsolns.erecipe.view.host
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -61,7 +63,21 @@ class DetailsActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home){
             finish()
+        }else if(item.itemId == R.id.nav_favourite){
+            saveFavouriteDatabase(item)
         }
         return super.onOptionsItemSelected(item)
     }
+
+    private fun saveFavouriteDatabase(item: MenuItem) {
+
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.overview_layout_menu, menu)
+        return true
+    }
+
+
 }

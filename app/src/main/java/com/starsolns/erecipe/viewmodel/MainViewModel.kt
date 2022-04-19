@@ -6,7 +6,8 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import androidx.lifecycle.*
 import com.starsolns.erecipe.data.repository.Repository
-import com.starsolns.erecipe.data.room.RecipeEntity
+import com.starsolns.erecipe.data.room.entities.FavouriteEntity
+import com.starsolns.erecipe.data.room.entities.RecipeEntity
 import com.starsolns.erecipe.model.Recipe
 import com.starsolns.erecipe.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -24,6 +25,9 @@ class MainViewModel @Inject constructor(
     val searchRecipeResponse : MutableLiveData<NetworkResult<Recipe>> = MutableLiveData()
 
     val localRecipes: LiveData<List<RecipeEntity>> =  repository.local.getALlRecipes().asLiveData()
+    val favouriteRecipes: LiveData<List<FavouriteEntity>> = repository.local.getAllFavourites().asLiveData()
+
+
 
     /** Room Instance*/
     private fun insertRecipes(recipeEntity: RecipeEntity){
@@ -31,6 +35,23 @@ class MainViewModel @Inject constructor(
             repository.local.insertRecipe(recipeEntity)
         }
     }
+
+    fun insertFavouriteRecipe(favouriteEntity: FavouriteEntity){
+        viewModelScope.launch {
+            repository.local.insertFavouriteRecipe(favouriteEntity)
+        }
+    }
+    fun deleteFavouriteRecipe(favouriteEntity: FavouriteEntity){
+        viewModelScope.launch {
+            repository.local.deleteFavourite(favouriteEntity)
+        }
+    }
+    fun deleteAllFavouriteRecipe(){
+        viewModelScope.launch {
+            repository.local.deleteAllFavourites()
+        }
+    }
+
 
 
     /** Retrofit instance */

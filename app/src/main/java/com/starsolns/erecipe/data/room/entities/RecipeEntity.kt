@@ -1,4 +1,4 @@
-package com.starsolns.erecipe.data.room
+package com.starsolns.erecipe.data.room.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

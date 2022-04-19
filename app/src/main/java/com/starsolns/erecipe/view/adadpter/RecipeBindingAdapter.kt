@@ -4,7 +4,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import com.starsolns.erecipe.data.room.RecipeEntity
+import com.starsolns.erecipe.data.room.entities.RecipeEntity
 import com.starsolns.erecipe.model.Recipe
 import com.starsolns.erecipe.util.NetworkResult
 

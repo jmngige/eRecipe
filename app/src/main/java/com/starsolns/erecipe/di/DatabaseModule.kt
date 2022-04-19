@@ -2,7 +2,7 @@ package com.starsolns.erecipe.di
 
 import android.content.Context
 import androidx.room.Room
-import com.starsolns.erecipe.data.room.RecipeDatabase
+import com.starsolns.erecipe.data.room.database.RecipeDatabase
 import com.starsolns.erecipe.util.Constants.Companion.DATABASE_NAME
 import dagger.Module
 import dagger.Provides
