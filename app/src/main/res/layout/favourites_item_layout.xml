@@ -17,6 +17,7 @@
         android:paddingStart="4dp"
         android:paddingEnd="4dp"
         android:paddingTop="4dp"
+        android:background="@color/favouritesCardBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -31,7 +32,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:strokeColor="@color/light_green_700"
+            app:strokeColor="@color/favouritesCardStrokeColor"
             app:strokeWidth="1.5dp">
 
 

@@ -18,14 +18,28 @@
     <color name="medium_grey">#BCB9B9</color>
     <color name="bg_grey">#918D8D</color>
     <color name="dark_grey">#1b1b1b</color>
+    <color name="darker">#151b20</color>
+    <color name="dark">#313C44</color>
 
     <color name="light_green_color">#505efc82</color>
     <color name="tabLayoutBackground">#009624</color>
 
+    <!-- Recipe Items card Background -->
+    <color name="recipeItemBackground">@color/white</color>
+    <color name="recipeItemCardStrokeColor">#918D8D</color>
 
-    <!-- Ingredient cardview colors -->
+    <!-- Ingredient cardView colors -->
     <color name="ingredient_item_stroke_color">#BCB9B9</color>
     <color name="ingredient_view_bg">@color/white</color>
     <color name="card_bg_color">@color/white</color>
+
+    <!-- favourites item layout -->
+    <color name="favouritesCardBackground">@color/white</color>
+    <color name="favouritesCardStrokeColor">#918D8D</color>
+
+    <!-- contextual action bar -->
+    <color name="contextualModeStatusBarColor">@color/darker</color>
+    <color name="contextualModeActionBarColor">@color/dark</color>
+    <color name="normalModeStatusBarColor">@color/dark_green_700</color>
 
 </resources>
