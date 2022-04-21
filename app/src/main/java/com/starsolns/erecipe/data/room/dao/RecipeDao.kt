@@ -22,7 +22,7 @@ interface RecipeDao {
     suspend fun deleteFavourite(favouriteEntity: FavouriteEntity)
 
     @Query("DELETE FROM favourites_table")
-    fun deleteAllFavourites()
+    suspend fun deleteAllFavourites()
 
     @Query("SELECT * FROM favourites_table ORDER BY id ASC")
     fun getAllFavourites(): Flow<List<FavouriteEntity>>

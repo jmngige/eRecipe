@@ -30,7 +30,7 @@ class LocalDataSource @Inject constructor(
         return recipeDao.getAllFavourites()
     }
 
-    fun deleteAllFavourites(){
+    suspend fun deleteAllFavourites(){
         recipeDao.deleteAllFavourites()
     }
 
