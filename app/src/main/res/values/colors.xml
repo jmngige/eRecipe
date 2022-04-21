@@ -36,6 +36,8 @@
     <!-- favourites item layout -->
     <color name="favouritesCardBackground">@color/white</color>
     <color name="favouritesCardStrokeColor">#918D8D</color>
+    <color name="selectedFavouritesCardBackground">#50009624</color>
+    <color name="selectedFavouritesCardStrokeColor">#009624</color>
 
     <!-- contextual action bar -->
     <color name="contextualModeStatusBarColor">@color/darker</color>
