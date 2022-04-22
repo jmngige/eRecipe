@@ -65,6 +65,8 @@ class JokeFragment : Fragment() {
            },3000)
         }
 
+        setHasOptionsMenu(true)
+
         return binding.root
     }
 
