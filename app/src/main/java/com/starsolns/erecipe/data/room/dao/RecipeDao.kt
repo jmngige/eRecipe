@@ -2,6 +2,7 @@ package com.starsolns.erecipe.data.room.dao
 
 import androidx.room.*
 import com.starsolns.erecipe.data.room.entities.FavouriteEntity
+import com.starsolns.erecipe.data.room.entities.FoodJokeEntity
 import com.starsolns.erecipe.data.room.entities.RecipeEntity
 import com.starsolns.erecipe.model.Result
 import kotlinx.coroutines.flow.Flow
@@ -26,4 +27,11 @@ interface RecipeDao {
 
     @Query("SELECT * FROM favourites_table ORDER BY id ASC")
     fun getAllFavourites(): Flow<List<FavouriteEntity>>
+
+    /** Food Jokes */
+    @Insert
+    suspend fun insertJokes(foodJokeEntity: FoodJokeEntity)
+
+    @Query("SELECT * FROM food_jokes_table ORDER BY id ASC")
+    fun getAllFoodJokes() : Flow<List<FoodJokeEntity>>
 }

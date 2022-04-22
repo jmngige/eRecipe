@@ -1,6 +1,7 @@
 package com.starsolns.erecipe.data.datasource
 
 import com.starsolns.erecipe.data.retrofit.RecipeApi
+import com.starsolns.erecipe.model.FoodJoke
 import com.starsolns.erecipe.model.Recipe
 import retrofit2.Response
 import javax.inject.Inject
@@ -14,6 +15,10 @@ class RemoteDataSource @Inject constructor(
 
     suspend fun searchRecipes(searchQueries: Map<String, String>) : Response<Recipe>{
         return recipeApi.searchRecipes(searchQueries)
+    }
+
+    suspend fun getFoodJoke(apiKey: String): Response<FoodJoke>{
+        return recipeApi.getFoodJoke(apiKey)
     }
 
 }

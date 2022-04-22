@@ -2,6 +2,7 @@ package com.starsolns.erecipe.data.datasource
 
 import com.starsolns.erecipe.data.room.dao.RecipeDao
 import com.starsolns.erecipe.data.room.entities.FavouriteEntity
+import com.starsolns.erecipe.data.room.entities.FoodJokeEntity
 import com.starsolns.erecipe.data.room.entities.RecipeEntity
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -33,5 +34,15 @@ class LocalDataSource @Inject constructor(
     suspend fun deleteAllFavourites(){
         recipeDao.deleteAllFavourites()
     }
+
+    /** food jokes */
+    suspend fun insertFoodJokes(foodJokeEntity: FoodJokeEntity){
+        recipeDao.insertJokes(foodJokeEntity)
+    }
+
+    fun getAllFoodJokes() : Flow<List<FoodJokeEntity>>{
+        return recipeDao.getAllFoodJokes()
+    }
+
 
 }
