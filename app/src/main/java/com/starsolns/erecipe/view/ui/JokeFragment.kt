@@ -44,13 +44,15 @@ class JokeFragment : Fragment() {
                 is NetworkResult.Error ->{
 
                     binding.errorImageView.visibility = View.VISIBLE
-                    binding.errorMessages.visibility - View.VISIBLE
+                    binding.errorMessages.visibility = View.VISIBLE
                     binding.errorMessages.text = response.message.toString()
                     binding.progressBar.visibility = View.INVISIBLE
 
                 }
                 is NetworkResult.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
+                    binding.errorImageView.visibility = View.INVISIBLE
+                    binding.errorMessages.visibility = View.INVISIBLE
                 }
             }
         }
