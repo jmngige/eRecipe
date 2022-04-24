@@ -6,14 +6,24 @@
         <item name="colorPrimaryVariant">@color/dark_green_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="actionModeBackground">@color/contextualModeActionBarColor</item>
+        <item name="android:statusBarColor">@color/normalModeStatusBarColor</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/medium_green_800</item>
         <item name="colorSecondaryVariant">@color/dark_green_800</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item -->
         <!-- Customize your theme here. -->
     </style>
+
+    <!-- Splash screen -->
+    <style name="splashScreenStyle" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_screen</item>
+        <item name="postSplashScreenTheme">@style/Theme.ERecipe</item>
+
+    </style>
+
 
     <!-- Filter chips design style -->
     <style name="customChipStyle" parent="Widget.MaterialComponents.Chip.Filter">

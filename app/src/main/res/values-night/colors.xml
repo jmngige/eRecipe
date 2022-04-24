@@ -25,7 +25,6 @@
 
     <color name="light_green_color">#505efc82</color>
     <color name="tabLayoutBackground">#009624</color>
-
     <color name="splash_background">#009624</color>
 
     <!-- Recipe Items card Background -->
@@ -46,6 +45,6 @@
     <!-- contextual action bar -->
     <color name="contextualModeStatusBarColor">@color/darker</color>
     <color name="contextualModeActionBarColor">@color/dark</color>
-    <color name="normalModeStatusBarColor">@color/dark_green_700</color>
+    <color name="normalModeStatusBarColor">@color/black</color>
 
 </resources>
