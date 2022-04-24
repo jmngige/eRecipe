@@ -42,7 +42,7 @@
         <item name="colorSecondaryVariant">@color/dark_green_800</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@color/normalModeStatusBarColor</item>
         <!-- toolbar color. -->
         <item name="colorControlNormal">@color/white</item>
     </style>
